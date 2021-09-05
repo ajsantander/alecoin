@@ -12,7 +12,7 @@ const PARAMETERS = {
 
 const OVERRIDES = {
   gasPrice: ethers.utils.parseUnits('10', 'gwei'),
-  gasLimit: 8000000,
+  gasLimit: 2000000,
 }
 
 async function main() {
