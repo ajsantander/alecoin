@@ -10,6 +10,11 @@ const PARAMETERS = {
   owner: '0x45a10F35BeFa4aB841c77860204b133118B7CcAE',
 }
 
+const OVERRIDES = {
+  gasPrice: ethers.utils.parseUnits('10', 'gwei'),
+  gasLimit: 8000000,
+}
+
 async function main() {
   const deploymentPath = `./deployments/${hre.network.name}.json`;
 
@@ -28,7 +33,7 @@ async function main() {
 
 async function _deployContract() {
   const factory = await ethers.getContractFactory('AleCoin');
-  const AleCoin = await factory.deploy(...Object.values(PARAMETERS));
+  const AleCoin = await factory.deploy(...Object.values(PARAMETERS), OVERRIDES);
   console.log('Submitted transaction:', AleCoin.deployTransaction);
 
   const receipt = await AleCoin.deployTransaction.wait();
